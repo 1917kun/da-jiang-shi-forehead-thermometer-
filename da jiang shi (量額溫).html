@@ -8,31 +8,154 @@
     <style>
         body {
             margin: 0;
-            /* background-image: url(./學生處理過.jpg);
-            background-size: ;
-            background-repeat: no-repeat; */
-            /* background: fixed; */
+            background: #c4e9fb;
+
         }
 
+        #game {
 
-        div img {
-            width: 100vw;
-            height: 100vh;
-            position: fixed;
+            /* cursor: url(./額溫槍.png)50 50, auto; */
+        }
+
+        #main {
+            position: absolute;
+            top: 5%;
+            left: 45%;
+        }
+
+        #st1 {
+            position: absolute;
+            top: 45%;
+            left: 10%;
+        }
+
+        .s1 {
+            position: absolute;
+            top: -10%;
+            left: 35%;
+        }
+
+        #st2 {
+            position: absolute;
+            top: 45%;
+            left: 24%;
+        }
+
+        #st3 {
+            position: absolute;
+            top: 45%;
+            left: 38%;
+        }
+
+        #st4 {
+            position: absolute;
+            top: 45%;
+            left: 52%;
+        }
+
+        #st5 {
+            position: absolute;
+            top: 45%;
+            left: 66%;
+        }
+
+        #st6 {
+            position: absolute;
+            top: 45%;
+            left: 80%;
         }
     </style>
 </head>
 
 <body>
-    <div id="bg">
-        <img src="./學生處理過.jpg" alt="">
-    </div>
+    <div></div>
+    <div id="game">
+        <span id="st1">
+            <span class="s1">體溫</span>
+            <img src="001-01.png" alt="" id="">
+        </span>
+        <span id="st2">
+            <span class="s1">體溫</span>
+            <img src="001-02.png" alt="" id="">
+        </span>
+        <span id="st3">
+            <span class="s1">體溫</span>
+            <img src="001-03.png" alt="" id="">
+        </span>
+        <span id="st4">
+            <span class="s1">體溫</span>
+            <img src="001-04.png" alt="" id="">
+        </span>
+        <span id="st5">
+            <span class="s1">體溫</span>
+            <img src="001-05.png" alt="" id="">
+        </span>
+        <span id="st6">
+            <span class="s1">體溫</span>
+            <img src="001-06.png" alt="" id="">
+        </span>
 
+    </div>
+    <span id="temp1"></span>
+    <span id="temp2"></span>
+    <span id="temp3"></span>
+    <span id="temp4"></span>
+    <span id="temp5"></span>
+    <span id="temp6"></span>
+    <div></div>
+
+
+    <div id="main">
+        <input type="button" value="美好的一天從量額溫開始" id="btn-start">
+        <p>剩餘時間: <span id="text-time">10</span>秒</p>
+    </div>
 
 
 
     <script src="jquery-3.5.0.min.js"></script>
     <script>
+
+        let score = 0;
+        let ar = [];
+
+
+        // 隨機數字產生
+        const rand = (num) => {
+            return Math.round(Math.random() * num)
+        }
+
+
+        ar.push(rand(10) / 10 + 37.5);
+        for (let i = 0; i < 5; i++) {
+            ar.push(rand(24) / 10 + 35)
+        }
+        console.log(ar);
+
+
+
+
+
+        $("btn-start").click(function () {
+            // 按鈕不能再按
+            $(this).attr("disabled", true);
+            // 
+        })
+
+
+        $("#game").on("click", "img", function () {
+            let random = rand(30) / 10 + 35 + "度";
+            $(this).prev().text(random);
+            // console.log($(this).prev().innertext());
+            $(this).prev().text(ar[])
+        })
+
+
+
+
+
+
+
+
 
 
 
