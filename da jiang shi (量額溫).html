@@ -23,10 +23,15 @@
             left: 45%;
         }
 
-        #st1 {
+        #black {
+            width: 348px;
+            height: 195px;
             position: absolute;
-            top: 45%;
-            left: 10%;
+            top: 25%;
+            left: 50%;
+            transform: translate(-174px, -97.5px);
+            background: #333;
+            /* background-image: url(./黑人抬棺材.jpg); */
         }
 
         .s1 {
@@ -35,79 +40,78 @@
             left: 35%;
         }
 
+        #st1 {
+            position: absolute;
+            top: 60%;
+            left: 10%;
+        }
+
+
+
         #st2 {
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 24%;
         }
 
         #st3 {
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 38%;
         }
 
         #st4 {
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 52%;
         }
 
         #st5 {
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 66%;
         }
 
         #st6 {
             position: absolute;
-            top: 45%;
+            top: 60%;
             left: 80%;
         }
     </style>
 </head>
 
 <body>
-    <div></div>
+    <div id="black"></div>
     <div id="game">
-        <span id="st1">
+        <div id="st1" class="temp">
             <span class="s1">體溫</span>
             <img src="001-01.png" alt="" id="">
-        </span>
-        <span id="st2">
+        </div>
+        <div id="st2" class="temp">
             <span class="s1">體溫</span>
             <img src="001-02.png" alt="" id="">
-        </span>
-        <span id="st3">
+        </div>
+        <div id="st3" class="temp">
             <span class="s1">體溫</span>
             <img src="001-03.png" alt="" id="">
-        </span>
-        <span id="st4">
+        </div>
+        <div id="st4" class="temp">
             <span class="s1">體溫</span>
             <img src="001-04.png" alt="" id="">
-        </span>
-        <span id="st5">
+        </div>
+        <div id="st5" class="temp">
             <span class="s1">體溫</span>
             <img src="001-05.png" alt="" id="">
-        </span>
-        <span id="st6">
+        </div>
+        <div id="st6" class="temp">
             <span class="s1">體溫</span>
             <img src="001-06.png" alt="" id="">
-        </span>
-
+        </div>
     </div>
-    <span id="temp1"></span>
-    <span id="temp2"></span>
-    <span id="temp3"></span>
-    <span id="temp4"></span>
-    <span id="temp5"></span>
-    <span id="temp6"></span>
-    <div></div>
-
 
     <div id="main">
         <input type="button" value="美好的一天從量額溫開始" id="btn-start">
-        <p>剩餘時間: <span id="text-time">10</span>秒</p>
+        <input type="button" value="再來一次">
     </div>
 
 
@@ -115,39 +119,67 @@
     <script src="jquery-3.5.0.min.js"></script>
     <script>
 
-        let score = 0;
+        $("#btn-start").click(function () {
+            // 按鈕不能再按
+            $(this).attr("disabled", true);
+            // 生成棺材飛起來
+            $("#game").append(` `)
+            // 點擊img時
+            $("#game").on("click", "img", function () {
+                $(this).siblings().text(dr[0] + "度");
+                dr.splice(0, 1);
+                $(this).css(`pointer-events`, `none`)
+            })
+
+        })
+
+
+
+        // 產生六個隨機數字(第一個超過37.5 剩下的都沒超過37.5)
+        // ar 放好的體溫，第一個是超過37.5
         let ar = [];
-
-
-        // 隨機數字產生
         const rand = (num) => {
             return Math.round(Math.random() * num)
         }
-
-
         ar.push(rand(10) / 10 + 37.5);
         for (let i = 0; i < 5; i++) {
             ar.push(rand(24) / 10 + 35)
         }
         console.log(ar);
 
+        // 隨機排列
+        // 選擇 ar 裡不重複的數字 key 
+        const rand2 = (min, max) => {
+            return Math.round(Math.random() * (max - min) + min);
+        }
 
+        let cr = [];
+        let c = 0;
+        // 隨機 0-5
+        for (let i = 0; i <= 5; i++) {
+            c = rand2(0, 5);
+            while (cr.includes(c)) {
+                c = rand2(0, 5);
+            }
+            cr.push(c);
+        }
+        console.log(cr);
 
+        let dr = [];
+        let d = 0;
+        // 印出隨機放好在 ar 裡的溫度
+        for (let i = 0; i <= 5; i++) {
+            dr[i] = ar[cr[i]];
+        }
+        console.log(dr);
 
+        // // 點擊img時
+        // $("#game").on("click", "img", function () {
+        //     $(this).siblings().text(dr[0] + "度");
+        //     dr.splice(0, 1);
+        //     $(this).css(`pointer-events`, `none`)
+        // })
 
-        $("btn-start").click(function () {
-            // 按鈕不能再按
-            $(this).attr("disabled", true);
-            // 
-        })
-
-
-        $("#game").on("click", "img", function () {
-            let random = rand(30) / 10 + 35 + "度";
-            $(this).prev().text(random);
-            // console.log($(this).prev().innertext());
-            $(this).prev().text(ar[])
-        })
 
 
 
