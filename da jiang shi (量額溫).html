@@ -13,8 +13,10 @@
         }
 
         #game {
+            width: 100vw;
+            height: 100vh;
+            cursor: url(./額溫槍2.png)25 25, auto;
 
-            /* cursor: url(./額溫槍.png)50 50, auto; */
         }
 
         #main {
@@ -86,27 +88,27 @@
     <div id="game">
         <div id="st1" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-01.png" alt="" id="">
+            <img src="001-01.png" alt="" class="img">
         </div>
         <div id="st2" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-02.png" alt="" id="">
+            <img src="001-02.png" alt="" class="img">
         </div>
         <div id="st3" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-03.png" alt="" id="">
+            <img src="001-03.png" alt="" class="img">
         </div>
         <div id="st4" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-04.png" alt="" id="">
+            <img src="001-04.png" alt="" class="img">
         </div>
         <div id="st5" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-05.png" alt="" id="">
+            <img src="001-05.png" alt="" class="img">
         </div>
         <div id="st6" class="temp">
             <span class="s1">體溫</span>
-            <img src="001-06.png" alt="" id="">
+            <img src="001-06.png" alt="" class="img">
         </div>
     </div>
 
@@ -175,6 +177,7 @@
 
 
         $("#btn-start").click(function () {
+            // $("#game")cursor: url(./額溫槍.png)50 50, auto;
 
             // 按鈕不能再按
             $(this).attr("disabled", true);
@@ -191,7 +194,6 @@
                     alert("go home please!")
 
                 }
-
                 else {
                     $("#black").css({
                         "background-image": "url(./safe.png)"
