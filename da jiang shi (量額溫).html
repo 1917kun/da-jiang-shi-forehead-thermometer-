@@ -111,29 +111,17 @@
 
     <div id="main">
         <input type="button" value="美好的一天從量額溫開始" id="btn-start">
-        <input type="button" value="再來一次">
+        <input type="button" name="renovates" value="再來一次" onclick="renovates()" />
     </div>
 
 
 
     <script src="jquery-3.5.0.min.js"></script>
     <script>
-
-        $("#btn-start").click(function () {
-            // 按鈕不能再按
-            $(this).attr("disabled", true);
-            // 生成棺材飛起來
-            $("#game").append(` `)
-            // 點擊img時
-            $("#game").on("click", "img", function () {
-                $(this).siblings().text(dr[0] + "度");
-                dr.splice(0, 1);
-                $(this).css(`pointer-events`, `none`)
-            })
-
-        })
-
-
+        // 點擊刷新
+        function renovates() {
+            document.location.reload();
+        }
 
         // 產生六個隨機數字(第一個超過37.5 剩下的都沒超過37.5)
         // ar 放好的體溫，第一個是超過37.5
@@ -145,7 +133,8 @@
         for (let i = 0; i < 5; i++) {
             ar.push(rand(24) / 10 + 35)
         }
-        console.log(ar);
+        // console.log(ar);
+        // ---------------------------
 
         // 隨機排列
         // 選擇 ar 裡不重複的數字 key 
@@ -163,7 +152,9 @@
             }
             cr.push(c);
         }
-        console.log(cr);
+        // console.log(cr);
+        // -----------------------
+
 
         let dr = [];
         let d = 0;
@@ -171,15 +162,29 @@
         for (let i = 0; i <= 5; i++) {
             dr[i] = ar[cr[i]];
         }
-        console.log(dr);
+        // console.log(dr);
 
-        // // 點擊img時
-        // $("#game").on("click", "img", function () {
-        //     $(this).siblings().text(dr[0] + "度");
-        //     dr.splice(0, 1);
-        //     $(this).css(`pointer-events`, `none`)
-        // })
 
+        const rand3 = (num) => {
+            return Math.round(Math.random() * num)
+        }
+
+
+        // ----------------------------------
+
+
+        $("#btn-start").click(function () {
+            // 按鈕不能再按
+            $(this).attr("disabled", true);
+            // 點擊img時
+            $("#game").on("click", "img", function () {
+                $(this).siblings().text(dr[0] + "度");
+                dr.splice(0, 1);
+                $(this).css(`pointer-events`, `none`)
+                // if () {
+                // }
+            })
+        })
 
 
 
