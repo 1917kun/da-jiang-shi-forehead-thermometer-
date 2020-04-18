@@ -169,12 +169,13 @@
         const rand3 = (num) => {
             return Math.round(Math.random() * num)
         }
-
+        const taiguancai = new Audio("./抬棺迷因 (mp3cut.net).mp3")
 
         // ----------------------------------
 
 
         $("#btn-start").click(function () {
+
             // 按鈕不能再按
             $(this).attr("disabled", true);
             // 點擊img時
@@ -184,15 +185,17 @@
                 $(this).css(`pointer-events`, `none`)
                 if ($(this).siblings().text() > 37.5) {
                     $("#black").css({
-                        "background-image": "url(./黑人抬棺材.jpg)"
+                        "background-image": "url(./黑人抬棺材.jpg)",
                     })
+                    taiguancai.play();
+                    alert("go home please!")
+
                 }
+
                 else {
                     $("#black").css({
                         "background-image": "url(./safe.png)"
                     })
-
-
                 }
             })
         })
