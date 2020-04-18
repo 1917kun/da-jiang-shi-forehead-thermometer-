@@ -30,8 +30,9 @@
             top: 25%;
             left: 50%;
             transform: translate(-174px, -97.5px);
-            background: #333;
+            background: #000;
             /* background-image: url(./黑人抬棺材.jpg); */
+            /* background-image: url(./safe.png); */
         }
 
         .s1 {
@@ -178,11 +179,21 @@
             $(this).attr("disabled", true);
             // 點擊img時
             $("#game").on("click", "img", function () {
-                $(this).siblings().text(dr[0] + "度");
+                $(this).siblings().text(dr[0]);
                 dr.splice(0, 1);
                 $(this).css(`pointer-events`, `none`)
-                // if () {
-                // }
+                if ($(this).siblings().text() > 37.5) {
+                    $("#black").css({
+                        "background-image": "url(./黑人抬棺材.jpg)"
+                    })
+                }
+                else {
+                    $("#black").css({
+                        "background-image": "url(./safe.png)"
+                    })
+
+
+                }
             })
         })
 
