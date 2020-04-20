@@ -28,13 +28,14 @@
         #black {
             width: 348px;
             height: 195px;
-            position: absolute;
+            /* position: absolute;
             top: 25%;
             left: 50%;
-            transform: translate(-174px, -97.5px);
+            transform: translate(-174px, -97.5px); */
+            /* 用下面那種方式較輕鬆 */
+            margin: auto;
+            margin-top: 5%;
             background: #000;
-            /* background-image: url(./黑人抬棺材.jpg); */
-            /* background-image: url(./safe.png); */
         }
 
         .s1 {
@@ -189,6 +190,11 @@
                 if ($(this).siblings().text() > 37.5) {
                     $("#black").css({
                         "background-image": "url(./黑人抬棺材.jpg)",
+                        "background-size": "cover",
+                        "width": "100vw",
+                        "height": "100vh",
+                        "margin": "auto"
+                        // "background-repeat": "no-repeat"
                     })
                     // 因為alert會後於音樂出來所以讓他設在setTimeout裡0秒來解決這問題
                     setTimeout("alert('go home please!');taiguancai.play();", 0);
